@@ -1,6 +1,6 @@
 import pymysql
 
-__version__ = "0.0.2"
+__version__ = "0.0.3"
 
 class MYSQLSingleton(type):
   _instances = {}
@@ -17,7 +17,7 @@ class BetterMYSQL(metaclass=MYSQLSingleton):
   @staticmethod
   def setup(name, user, pasw, host, port=3306, timeout=5):
     if (not BetterMYSQL.__conn):
-      BetterMYSQL.__conn = pymysql.connect(host=host, user=user, passwd=pasw, BetterMYSQL=name, port=port, connect_timeout=timeout, autocommit=True)
+      BetterMYSQL.__conn = pymysql.connect(host=host, user=user, passwd=pasw, database=name, port=port, connect_timeout=timeout, autocommit=True)
     
   @staticmethod
   def connection():
