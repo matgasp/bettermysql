@@ -1,6 +1,6 @@
 import pymysql
 
-__version__ = "0.0.3"
+__version__ = "0.0.4"
 
 class MYSQLSingleton(type):
   _instances = {}
@@ -53,8 +53,6 @@ class BetterMYSQL(metaclass=MYSQLSingleton):
 
 class Model:
   __query=""
-
-  _is_flex=False
   _table=""
   
   def table(self):
@@ -69,7 +67,6 @@ class Model:
     return self
 
   def insert(self, s):
-    s += ",usr_cad,usr_ualt,dt_cad,dt_ualt" if self._is_flex else ""
     self.__query = f"insert into {self._table} ({s}) "
 
     return self
@@ -108,7 +105,6 @@ class Model:
         i += 1
 
     dt = BetterMYSQL.sql_date()
-    s += f",'site','site',{dt},{dt}" if self._is_flex else ""
 
     self.__query += f"values ({s}) "
 
