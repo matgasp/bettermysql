@@ -51,6 +51,6 @@ People().update("age = ?").where("name = ?").run([16, "Matt"])
 ## **Delete**
 
 ```python
-# Delete all persons
+# Delete all people
 People().delete()
 ```

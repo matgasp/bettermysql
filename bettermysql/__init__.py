@@ -1,6 +1,6 @@
 import pymysql
 
-__version__ = "0.0.4"
+__version__ = "0.0.5"
 
 class MYSQLSingleton(type):
   _instances = {}
